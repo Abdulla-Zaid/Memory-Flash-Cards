@@ -21,9 +21,13 @@ in easy mode when the card flip the position of card will be the same no change
 
 1. Planning by Drawing
 
-# Wireframes
+# Wireframes/Screenshot Design
 
-![image](https://)
+![image](./images/Screenshot-1.png)
+![image](./images/Screenshot-2.png)
+![image](./images/Screenshot-3.png)
+![image](./images/Screenshot-4.png)
+![image](./images/Screenshot-5.png)
 
 # Lists/Tech used
 
@@ -31,3 +35,7 @@ in easy mode when the card flip the position of card will be the same no change
 - html
 - JavaScript
 - Game Logic
+
+# source /reference/attributions
+
+- [flaticon](https://www.flaticon.com/)
