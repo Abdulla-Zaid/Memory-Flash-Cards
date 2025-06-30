@@ -43,4 +43,4 @@ in easy mode when the cards flip back in some second
 # source /reference/attributions
 
 - [flaticon](https://www.flaticon.com/)
-- [uicookies.com](https://uicookies.com)
+- [uicookies.com](https://codepen.io/chris22smith/pen/dOOrOP)
