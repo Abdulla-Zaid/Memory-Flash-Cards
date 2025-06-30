@@ -39,3 +39,4 @@ in easy mode when the card flip the position of card will be the same no change
 # source /reference/attributions
 
 - [flaticon](https://www.flaticon.com/)
+- [uicookies.com](https://uicookies.com)
