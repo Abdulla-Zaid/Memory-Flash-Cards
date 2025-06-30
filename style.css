@@ -33,3 +33,10 @@ body {
 .GamesSection th:hover {
   background-color: #88c0c0;
 }
+
+img {
+  height: 50%;
+  width: 50%;
+  align-items: center;
+  opacity: 1;
+}
