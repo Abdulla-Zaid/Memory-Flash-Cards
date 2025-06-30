@@ -40,3 +40,9 @@ img {
   align-items: center;
   opacity: 1;
 }
+
+h1 {
+  border-radius: 20px;
+  background-color: #878987;
+  text-align: center;
+}

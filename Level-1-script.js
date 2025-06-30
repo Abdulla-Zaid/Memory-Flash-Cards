@@ -5,6 +5,7 @@ const BoxCards = document.querySelectorAll('th')
 Cards = []
 let Counter = -1
 let WonFlag = false
+let TimmerFlag = true
 ////////////////////////////////
 // Functions For Game Logic Here
 
@@ -12,11 +13,13 @@ const FlipCards = () => {
   for (let i = 0; i < BoxCards.length; i++) {
     document.querySelectorAll('img')[i].style.opacity = '0'
   }
+  TimmerFlag = true
 }
 
 const CheckWinner = () => {
-  if (BoxCards[0].innerText === BoxCards[3].innerText) {
+  if (Cards[0] && Cards[3]) {
     console.log('You Won!')
+    document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
   } else {
     console.log('You Not A Winner')
   }
@@ -25,7 +28,7 @@ const CheckWinner = () => {
 const FlipTheCards = (Number) => {
   document.querySelectorAll('img')[Number].style.opacity = '1'
   document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
-  //Cards[Number] = document.querySelectorAll('img')[Number].src
+  Cards[Number] = true
   Counter++
   if (Counter === 1) {
     CheckWinner()
@@ -37,8 +40,8 @@ const FlipTheCards = (Number) => {
 
 setTimeout(FlipCards, 2000)
 
-for (let i = 0; i < BoxCards.length; i++) {
+for (let i = 0; i < BoxCards.length && TimmerFlag; i++) {
   BoxCards[i].addEventListener('click', () => FlipTheCards(i))
 }
-
+console.log(TimmerFlag)
 ////////////////////////////////
