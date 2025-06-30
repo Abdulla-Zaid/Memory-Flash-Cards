@@ -20,6 +20,7 @@ const CheckWinner = () => {
   if (Cards[0] && Cards[3]) {
     console.log('You Won!')
     document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
+    document.querySelectorAll('a')[0].href = './Level-2.html'
   } else {
     console.log('You Not A Winner')
   }
