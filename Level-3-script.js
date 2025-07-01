@@ -24,8 +24,8 @@ const FlipCardsBack = () => {
 
 function CheckWinner() {
   if (
-    (Cards[0] && Cards[5] && Cards[6]) ||
-    (Cards[2] && Cards[3] && Cards[8])
+    (Cards[0] && Cards[3] && Cards[12] && Cards[14]) ||
+    (Cards[1] && Cards[8] && Cards[10] && Cards[11])
   ) {
     document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
     document.querySelectorAll('h1')[0].innerText = 'You Won!'
