@@ -29,13 +29,16 @@ function CheckWinner() {
   ) {
     document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
     document.querySelectorAll('h1')[0].innerText = 'You Won!'
-    document.querySelectorAll('a')[0].href = './Level-3.html'
+    document.querySelectorAll('h1')[1].innerHTML =
+      "<a href='./Level-3.html'>Next Level</a>"
     document.querySelector('.Next-Level').style.backgroundColor = '#2ead2e'
     WonFlag = false
   } else {
     document.querySelectorAll('h1')[0].style.backgroundColor = '#ff0000'
     document.querySelectorAll('h1')[0].innerText = 'You lost Game Over!'
-    document.querySelectorAll('a')[0].href = './Level-2.html'
+    document.querySelectorAll('h1')[1].innerHTML =
+      "<a href='./Level-2.html'>Reset The Game</a>"
+    document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
     WonFlag = false
   }
 }
