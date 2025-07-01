@@ -43,4 +43,6 @@ in easy mode when the cards flip back in some second
 # source /reference/attributions
 
 - [flaticon](https://www.flaticon.com/)
-- [uicookies.com](https://codepen.io/chris22smith/pen/dOOrOP)
+- [uicookies](https://codepen.io/chris22smith/pen/dOOrOP)
+- [w3school](https://www.w3schools.com/tags/av_met_play.asp)
+- [pixabay](https://pixabay.com/sound-effects/search/game%20over/)
