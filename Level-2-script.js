@@ -29,7 +29,7 @@ function CheckWinner() {
   ) {
     document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
     document.querySelectorAll('h1')[0].innerText = 'You Won!'
-    document.querySelectorAll('a')[0].href = './Level-2.html'
+    document.querySelectorAll('a')[0].href = './Level-3.html'
     document.querySelector('.Next-Level').style.backgroundColor = '#2ead2e'
     WonFlag = false
   } else {
