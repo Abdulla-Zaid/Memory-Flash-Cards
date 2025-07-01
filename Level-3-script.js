@@ -2,6 +2,9 @@
 // Global Variables Here
 const Modes = document.querySelectorAll('li')
 const BoxCards = document.querySelectorAll('th')
+const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
+const audioWinning = new Audio('./audio/winning.mp3')
+const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
 Cards = []
 let Counter = -1
 let WonFlag = true
@@ -12,12 +15,14 @@ let TimmerFlag = false
 const FlipCards = () => {
   for (let i = 0; i < BoxCards.length; i++) {
     document.querySelectorAll('img')[i].style.opacity = '1'
+    audioFilpCard.play()
   }
 }
 
 const FlipCardsBack = () => {
   for (let i = 0; i < BoxCards.length; i++) {
     document.querySelectorAll('img')[i].style.opacity = '0'
+    audioFilpCard.play()
   }
   TimmerFlag = true
 }
@@ -33,6 +38,7 @@ function CheckWinner() {
       "<a href='./Level-1.html'>Go to Level 1</a>"
     document.querySelector('.Next-Level').style.backgroundColor = '#2ead2e'
     WonFlag = false
+    audioWinning.play()
   } else {
     document.querySelectorAll('h1')[0].style.backgroundColor = '#ff0000'
     document.querySelectorAll('h1')[0].innerText = 'You lost Game Over!'
@@ -40,6 +46,7 @@ function CheckWinner() {
       "<a href='./Level-3.html'>Reset The Game</a>"
     document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
     WonFlag = false
+    audioGamesOver.play()
   }
 }
 
@@ -49,12 +56,12 @@ const FlipTheCards = (Number) => {
     document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
     Cards[Number] = true
     Counter++
+    audioFilpCard.play()
     if (Counter === 3) {
       CheckWinner()
     }
   }
 }
-
 ////////////////////////////////
 // Event Listeners Here
 
