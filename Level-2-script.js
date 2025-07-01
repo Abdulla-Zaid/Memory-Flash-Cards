@@ -23,7 +23,10 @@ const FlipCardsBack = () => {
 }
 
 function CheckWinner() {
-  if (Cards[0] && Cards[3]) {
+  if (
+    (Cards[0] && Cards[5] && Cards[6]) ||
+    (Cards[2] && Cards[3] && Cards[8])
+  ) {
     document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
     document.querySelectorAll('h1')[0].innerText = 'You Won!'
     document.querySelectorAll('a')[0].href = './Level-2.html'
@@ -43,7 +46,7 @@ const FlipTheCards = (Number) => {
     document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
     Cards[Number] = true
     Counter++
-    if (Counter === 1) {
+    if (Counter === 2) {
       CheckWinner()
     }
   }
