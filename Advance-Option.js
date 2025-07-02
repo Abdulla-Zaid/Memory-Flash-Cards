@@ -1,6 +1,8 @@
 ////////////////////////////////
 //intil game
-let rowColum = prompt('Insert Number of size nxn of cards :[2,3,4,5,6]')
+let rowColum = prompt(
+  'Insert Number of size nxn for number of cards :[2,3,4,5,6]'
+)
 let html = ''
 // for (; !(rowColum > 1 && rowColum < 7); ) {
 //   let rowColum = prompt('Insert Number of size of cards :[2,3,4,5,6]')
@@ -181,5 +183,5 @@ Modes[1].addEventListener('click', () => {
   Modes[0].style.backgroundColor = '#efff0d'
   Modes[1].style.backgroundColor = '#03e203'
   setTimeout(FlipCards, 1000)
-  setTimeout(FlipCardsBack, 3000)
+  setTimeout(FlipCardsBack, 10000)
 })
