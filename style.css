@@ -77,3 +77,18 @@ li {
 li:hover {
   background-color: #42a642;
 }
+.Home-Page {
+  padding: auto;
+  margin: auto;
+  height: 50%;
+  width: 50%;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+}
+.Home-Page-h1 {
+  height: 50%;
+  width: 50%;
+  align-items: center;
+}
