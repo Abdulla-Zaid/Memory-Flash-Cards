@@ -32,15 +32,16 @@ const BoxCards = document.querySelectorAll('th')
 const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
 const audioWinning = new Audio('./audio/winning.mp3')
 const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
-Cards = []
+clickCards = []
 newCards = []
+index = []
 let Counter = 0
 let WonFlag = true
 let TimmerFlag = false
 let test = ''
 for (let i = 0; i < rowColum * rowColum; i++) {
   let index = Math.floor(Math.random() * 7)
-  newCards.push = arrImg[index]
+  newCards[i] = arrImg[index].toString()
   BoxCards[i].innerHTML = `<img src=${arrImg[index]} alt="" />`
 }
 
@@ -65,9 +66,10 @@ const FlipCardsBack = () => {
 const won = () => {
   document.querySelectorAll('h1')[0].style.backgroundColor = '#2ead2e'
   document.querySelectorAll('h1')[0].innerText = 'You Won!'
-  document.querySelectorAll('h1')[1].innerHTML =
-    "<a href='./Level-2.html'>Next Level</a>"
   document.querySelector('.Next-Level').style.backgroundColor = '#2ead2e'
+  document.querySelectorAll('h1')[1].innerHTML =
+    "<a href='./Advance-Option.html'>Reset The Game</a>"
+  document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
   WonFlag = false
   audioWinning.play()
 }
@@ -76,33 +78,84 @@ const lostGame = () => {
   document.querySelectorAll('h1')[0].style.backgroundColor = '#ff0000'
   document.querySelectorAll('h1')[0].innerText = 'You lost Game Over!'
   document.querySelectorAll('h1')[1].innerHTML =
-    "<a href='./Level-1.html'>Reset The Game</a>"
+    "<a href='./Advance-Option.html'>Reset The Game</a>"
   document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
   WonFlag = false
   audioGamesOver.play()
 }
 
 function CheckWinner() {
-  for (let i = 0; i < Cards.length; i++) {
-    let index = Cards[i]
-    if (newCards[index] === Cards[index]) {
-      won()
-    } else {
-      lostGame()
-    }
+  console.log('inside function')
+  switch (rowColum) {
+    case '2':
+      if (
+        newCards[index[0]] === clickCards[1] &&
+        newCards[index[1]] === clickCards[0]
+      ) {
+        won()
+      } else {
+        lostGame()
+      }
+      break
+    case '3':
+      if (
+        newCards[index[0]] === clickCards[1] &&
+        newCards[index[1]] === clickCards[0] &&
+        newCards[index[1]] === clickCards[2]
+      ) {
+        won()
+      } else {
+        lostGame()
+      }
+      break
+    case '4':
+      if (
+        newCards[index[0]] === clickCards[1] &&
+        newCards[index[1]] === clickCards[0] &&
+        newCards[index[1]] === clickCards[2] &&
+        newCards[index[2]] === clickCards[3]
+      ) {
+        won()
+      } else {
+        lostGame()
+      }
+      break
+    case '5':
+      if (
+        newCards[index[0]] === clickCards[1] &&
+        newCards[index[1]] === clickCards[0] &&
+        newCards[index[1]] === clickCards[2] &&
+        newCards[index[2]] === clickCards[3] &&
+        newCards[index[3]] === clickCards[4]
+      ) {
+        won()
+      } else {
+        lostGame()
+      }
+      break
+    case '6':
+      if (
+        newCards[index[0]] === clickCards[1] &&
+        newCards[index[1]] === clickCards[0] &&
+        newCards[index[1]] === clickCards[2] &&
+        newCards[index[2]] === clickCards[3] &&
+        newCards[index[3]] === clickCards[4] &&
+        newCards[index[4]] === clickCards[5]
+      ) {
+        won()
+      } else {
+        lostGame()
+      }
+      break
   }
-  // if (Cards[0] && Cards[3]) {
-  //   won()
-  // } else {
-  //   lostGame()
-  // }
 }
 
 const FlipTheCards = (Number) => {
   if (WonFlag && TimmerFlag) {
     document.querySelectorAll('img')[Number].style.opacity = '1'
     document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
-    Cards.push(newCards[Number])
+    clickCards.push(newCards[Number])
+    index.push(Number)
     Counter++
     audioFilpCard.play()
     if (Counter >= rowColum) {
@@ -128,5 +181,5 @@ Modes[1].addEventListener('click', () => {
   Modes[0].style.backgroundColor = '#efff0d'
   Modes[1].style.backgroundColor = '#03e203'
   setTimeout(FlipCards, 1000)
-  setTimeout(FlipCardsBack, 2000)
+  setTimeout(FlipCardsBack, 3000)
 })
