@@ -3,7 +3,8 @@
 let sizeBox = 0
 let row = 0
 let Colum = 0
-let numberOfMatch = 0
+let lestIndexNotMatch = 0
+let sizeNotMatch = 0
 let size = prompt(
   'Enter The Number of Cards :[4,8,16,18,32] default is 6 Cards '
 )
@@ -46,10 +47,7 @@ const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
 clickCards = []
 newCards = []
 index = []
-index2 = 0
 let Counter = 0
-let WonFlag = true
-// let TimmerFlag = false
 
 let arrImg = [
   './images/1.png',
@@ -91,24 +89,37 @@ distributionCards(row, Colum)
 ////////////////////////////////
 // Functions For Game Logic Here
 
+const NotMatch = () => {
+  let size = sizeNotMatch
+  let lestIndex = lestIndexNotMatch
+  document.querySelectorAll('img')[index[lestIndex]].style.opacity = ''
+  document.querySelectorAll('th')[index[lestIndex]].style.backgroundColor = ''
+  document.querySelectorAll('img')[index[lestIndex - 1]].style.opacity = ''
+  document.querySelectorAll('th')[index[lestIndex - 1]].style.backgroundColor =
+    ''
+  clickCards.pop()
+  index.pop()
+  clickCards.pop()
+  index.pop()
+}
+
 const CheckCards = () => {
   let size = clickCards.length - 1
   let lestIndex = index.length - 1
-  console.log('size')
-  console.log(size)
+  sizeNotMatch = size
+  lestIndexNotMatch = lestIndex
   if (clickCards[size] === clickCards[size - 1]) {
     //add slound
   } else {
-    document.querySelectorAll('img')[index[lestIndex]].style.opacity = ''
-    document.querySelectorAll('th')[index[lestIndex]].style.backgroundColor = ''
-    document.querySelectorAll('img')[index[lestIndex - 1]].style.opacity = ''
+    //document.querySelectorAll('img')[index[lestIndex]].style.opacity = ''
+    document.querySelectorAll('th')[index[lestIndex]].style.backgroundColor =
+      '#ff0000'
+    //document.querySelectorAll('img')[index[lestIndex - 1]].style.opacity = ''
     document.querySelectorAll('th')[
       index[lestIndex - 1]
-    ].style.backgroundColor = ''
-    clickCards.pop()
-    index.pop()
-    clickCards.pop()
-    index.pop()
+    ].style.backgroundColor = '#ff0000'
+
+    setTimeout(NotMatch, 1000)
   }
 }
 
@@ -120,13 +131,12 @@ const FlipTheCards = (Number) => {
     index.push(Number)
     audioFilpCard.play()
     Counter++
-    console.log(clickCards)
+
     if (Counter === 2) {
       CheckCards()
       Counter = 0
     }
   }
-  console.log(clickCards)
 }
 for (let i = 0; i < BoxCards.length; i++) {
   BoxCards[i].addEventListener('click', () => FlipTheCards(i))
