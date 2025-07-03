@@ -1,23 +1,40 @@
 ////////////////////////////////
-//intil game
-let rowColum = prompt(
-  'Insert Number of size nxn for number of cards :[2,3,4,5,6]'
-)
-let html = ''
-// for (; !(rowColum > 1 && rowColum < 7); ) {
-//   let rowColum = prompt('Insert Number of size of cards :[2,3,4,5,6]')
-// }
-for (let i = 0; i < rowColum; i++) {
-  html += '<tr>'
-  for (let i = 0; i < rowColum; i++) {
-    html += '<th></th>'
-  }
-  html += '</tr>'
-}
-document.querySelector('table').innerHTML = html
-
-////////////////////////////////
 // Global Variables Here
+let sizeBox = 0
+let rowColum = 0
+let size = prompt('Enter The Number of Cards :[9,16,25,36,] default is 9 ')
+switch (size) {
+  case '9':
+    sizeBox = 3
+    rowColum = 3
+    break
+  case '16':
+    sizeBox = 4
+    rowColum = 4
+    break
+  case '25':
+    sizeBox = 5
+    rowColum = 5
+    break
+  case '36':
+    sizeBox = 6
+    rowColum = 6
+    break
+  default:
+    sizeBox = 3
+    rowColum = 3
+}
+
+const Modes = document.querySelectorAll('li')
+const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
+const audioWinning = new Audio('./audio/winning.mp3')
+const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
+clickCards = []
+newCards = []
+index = []
+let Counter = 0
+let WonFlag = true
+let TimmerFlag = false
 
 let arrImg = [
   './images/1.png',
@@ -29,23 +46,30 @@ let arrImg = [
   './images/treasure-chest.png'
 ]
 
-const Modes = document.querySelectorAll('li')
-const BoxCards = document.querySelectorAll('th')
-const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
-const audioWinning = new Audio('./audio/winning.mp3')
-const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
-clickCards = []
-newCards = []
-index = []
-let Counter = 0
-let WonFlag = true
-let TimmerFlag = false
-let test = ''
-for (let i = 0; i < rowColum * rowColum; i++) {
-  let index = Math.floor(Math.random() * 7)
-  newCards[i] = arrImg[index].toString()
-  BoxCards[i].innerHTML = `<img src=${arrImg[index]} alt="" />`
+////////////////////////////////
+//initialization the  game
+function createRowColum(rowColum) {
+  let html = ''
+  for (let i = 0; i < rowColum; i++) {
+    html += '<tr>'
+    for (let i = 0; i < rowColum; i++) {
+      html += '<th></th>'
+    }
+    html += '</tr>'
+  }
+  document.querySelector('table').innerHTML = html
 }
+createRowColum(sizeBox)
+const BoxCards = document.querySelectorAll('th')
+
+const distributionCards = (rowColum) => {
+  for (let i = 0; i < rowColum * rowColum; i++) {
+    let index = Math.floor(Math.random() * 7)
+    newCards[i] = arrImg[index].toString()
+    BoxCards[i].innerHTML = `<img src=${arrImg[index]} alt="" />`
+  }
+}
+distributionCards(sizeBox)
 
 ////////////////////////////////
 // Functions For Game Logic Here
@@ -86,10 +110,9 @@ const lostGame = () => {
   audioGamesOver.play()
 }
 
-function CheckWinner() {
-  console.log('inside function')
+const CheckWinner = () => {
   switch (rowColum) {
-    case '2':
+    case 2:
       if (
         newCards[index[0]] === clickCards[1] &&
         newCards[index[1]] === clickCards[0]
@@ -99,7 +122,7 @@ function CheckWinner() {
         lostGame()
       }
       break
-    case '3':
+    case 3:
       if (
         newCards[index[0]] === clickCards[1] &&
         newCards[index[1]] === clickCards[0] &&
@@ -110,7 +133,7 @@ function CheckWinner() {
         lostGame()
       }
       break
-    case '4':
+    case 4:
       if (
         newCards[index[0]] === clickCards[1] &&
         newCards[index[1]] === clickCards[0] &&
@@ -122,7 +145,7 @@ function CheckWinner() {
         lostGame()
       }
       break
-    case '5':
+    case 5:
       if (
         newCards[index[0]] === clickCards[1] &&
         newCards[index[1]] === clickCards[0] &&
@@ -135,7 +158,7 @@ function CheckWinner() {
         lostGame()
       }
       break
-    case '6':
+    case 6:
       if (
         newCards[index[0]] === clickCards[1] &&
         newCards[index[1]] === clickCards[0] &&
