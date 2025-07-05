@@ -5,6 +5,9 @@ let row = 0
 let Colum = 0
 let lestIndexNotMatch = 0
 let sizeNotMatch = 0
+let score = 0
+let numberOfMatch = 0
+let matchEnd = 0
 let size = prompt(
   'Enter The Number of Cards :[4,8,16,18,32] default is 6 Cards '
 )
@@ -42,8 +45,8 @@ switch (size) {
 
 const Modes = document.querySelectorAll('li')
 const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
-// const audioWinning = new Audio('./audio/winning.mp3')
-// const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
+
+const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
 clickCards = []
 newCards = []
 index = []
@@ -56,7 +59,15 @@ let arrImg = [
   './images/orange.png',
   './images/Panana.png',
   './images/star.png',
-  './images/treasure-chest.png'
+  './images/treasure-chest.png',
+  './images/skating.png',
+  './images/american-football.png',
+  './images/stopwatch.png',
+  './images/trophy.png',
+  './images/snow-globe.png',
+  './images/cake.png',
+  './images/santa-claus.png',
+  './images/ping-pong.png'
 ]
 
 ////////////////////////////////
@@ -78,7 +89,7 @@ const BoxCards = document.querySelectorAll('th')
 const distributionCards = (row, Colum) => {
   let size = (row * Colum) / 2
   for (let i = 0; i < size; i++) {
-    let index = Math.floor(Math.random() * 7)
+    let index = Math.floor(Math.random() * 15)
     newCards[i] = arrImg[index].toString()
     newCards[size + i] = arrImg[index].toString()
     BoxCards[i].innerHTML = `<img src=${arrImg[index]} alt="" />`
@@ -109,12 +120,19 @@ const CheckCards = () => {
   sizeNotMatch = size
   lestIndexNotMatch = lestIndex
   if (clickCards[size] === clickCards[size - 1]) {
+    document.querySelectorAll('th')[
+      index[index.length - 1]
+    ].style.backgroundColor = 'blue'
+    document.querySelectorAll('th')[
+      index[index.length - 2]
+    ].style.backgroundColor = 'blue'
+    score += 10
+    matchEnd += 1
     //add slound
   } else {
-    //document.querySelectorAll('img')[index[lestIndex]].style.opacity = ''
+    score -= 5
     document.querySelectorAll('th')[index[lestIndex]].style.backgroundColor =
       '#ff0000'
-    //document.querySelectorAll('img')[index[lestIndex - 1]].style.opacity = ''
     document.querySelectorAll('th')[
       index[lestIndex - 1]
     ].style.backgroundColor = '#ff0000'
@@ -137,7 +155,17 @@ const FlipTheCards = (Number) => {
       Counter = 0
     }
   }
+  if (matchEnd === numberOfMatch) {
+    document.querySelectorAll('h1')[0].innerText = `Total Score : ` + `${score}`
+    //document.querySelectorAll('h1')[1].innerText = ' You Won '
+    //document.querySelectorAll('h1')[1].style.backgroundColor = 'green'
+    audioGamesOver.play()
+    document.querySelectorAll('h1')[1].innerHTML =
+      "<a href='./Memory-Flash-Cards.html'>Reset The Game</a>"
+    document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
+  }
 }
+
 for (let i = 0; i < BoxCards.length; i++) {
   BoxCards[i].addEventListener('click', () => FlipTheCards(i))
 }

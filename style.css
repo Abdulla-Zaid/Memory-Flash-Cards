@@ -65,6 +65,9 @@ h1 {
   background-color: #878987;
   text-align: center;
 }
+.Score {
+  width: 130%;
+}
 li {
   padding: 10px;
   margin: 10px;
