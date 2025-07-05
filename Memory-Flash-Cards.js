@@ -45,6 +45,7 @@ switch (size) {
 
 const Modes = document.querySelectorAll('li')
 const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
+const errorSound = new Audio('./audio/error-126627.mp3')
 
 const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
 clickCards = []
@@ -136,7 +137,7 @@ const CheckCards = () => {
     document.querySelectorAll('th')[
       index[lestIndex - 1]
     ].style.backgroundColor = '#ff0000'
-
+    errorSound.play()
     setTimeout(NotMatch, 1000)
   }
 }
