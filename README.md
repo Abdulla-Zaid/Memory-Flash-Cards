@@ -10,6 +10,10 @@
 
 2. Memory Flash Cards – Develop a memory flash card game matching two pairs of cards where users can customize the size of the cards for a game and play it
 
+# Play Game
+
+[Link to game](match-cards-by-abdulla-zaid.surge.sh)
+
 # Getting Started
 
 1. Planning by Drawing
