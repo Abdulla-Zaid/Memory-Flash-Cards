@@ -38,7 +38,7 @@ in easy mode when the cards flip back in some second
 # Pseudo-code for Memory Flash Cards
 
 The game will have a customizable user-defined card size of cards
-And if the user matches the card forthe first time, he will get a 10 score Else, remove 5 score from the total at the end If he matches all cards, the score will show at the end of the game, and the system will allow him to reset the game and play it again
+And if the user matches the card for the first time, he will get a 10 score Else, remove 5 score from the total at the end If he matches all cards, the score will show at the end of the game, and the system will allow him to reset the game and play it again
 
 # Lists/Tech used
 
