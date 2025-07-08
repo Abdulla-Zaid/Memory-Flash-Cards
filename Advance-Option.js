@@ -33,8 +33,8 @@ clickCards = []
 newCards = []
 index = []
 let Counter = 0
-let WonFlag = true
-let TimmerFlag = false
+let winFlag = true
+let timmerFlag = false
 
 let arrImg = [
   './images/1.png',
@@ -74,19 +74,19 @@ distributionCards(sizeBox)
 ////////////////////////////////
 // Functions For Game Logic Here
 
-const FlipCards = () => {
+const clipCards = () => {
   for (let i = 0; i < BoxCards.length; i++) {
     document.querySelectorAll('img')[i].style.opacity = '1'
     audioFilpCard.play()
   }
 }
 
-const FlipCardsBack = () => {
+const clipCardsBack = () => {
   for (let i = 0; i < BoxCards.length; i++) {
     document.querySelectorAll('img')[i].style.opacity = '0'
     audioFilpCard.play()
   }
-  TimmerFlag = true
+  timmerFlag = true
 }
 
 const won = () => {
@@ -96,7 +96,7 @@ const won = () => {
   document.querySelectorAll('h1')[1].innerHTML =
     "<a href='./Advance-Option.html'>Reset The Game</a>"
   document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
-  WonFlag = false
+  winFlag = false
   audioWinning.play()
 }
 
@@ -106,7 +106,7 @@ const lostGame = () => {
   document.querySelectorAll('h1')[1].innerHTML =
     "<a href='./Advance-Option.html'>Reset The Game</a>"
   document.querySelectorAll('h1')[1].style.backgroundColor = '#03e203'
-  WonFlag = false
+  winFlag = false
   audioGamesOver.play()
 }
 
@@ -175,8 +175,8 @@ const CheckWinner = () => {
   }
 }
 
-const FlipTheCards = (Number) => {
-  if (WonFlag && TimmerFlag) {
+const flipTheCards = (Number) => {
+  if (winFlag && timmerFlag) {
     document.querySelectorAll('img')[Number].style.opacity = '1'
     document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
     clickCards.push(newCards[Number])
@@ -193,18 +193,18 @@ const FlipTheCards = (Number) => {
 // Event Listeners Here
 
 for (let i = 0; i < BoxCards.length; i++) {
-  BoxCards[i].addEventListener('click', () => FlipTheCards(i))
+  BoxCards[i].addEventListener('click', () => flipTheCards(i))
 }
 
 Modes[1].addEventListener('click', () => {
   Modes[1].style.backgroundColor = '#03e203'
   Modes[2].style.backgroundColor = '#efff0d'
-  setTimeout(FlipCards, 1000)
-  setTimeout(FlipCardsBack, 4000)
+  setTimeout(clipCards, 1000)
+  setTimeout(clipCardsBack, 4000)
 })
 Modes[2].addEventListener('click', () => {
   Modes[1].style.backgroundColor = '#efff0d'
   Modes[2].style.backgroundColor = '#03e203'
-  setTimeout(FlipCards, 1000)
-  setTimeout(FlipCardsBack, 10000)
+  setTimeout(clipCards, 1000)
+  setTimeout(clipCardsBack, 10000)
 })

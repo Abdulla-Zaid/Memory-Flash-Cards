@@ -2,9 +2,9 @@
 // Global Variables Here
 let sizeBox = 0
 let row = 0
-let Colum = 0
-let lestIndexNotMatch = 0
-let sizeNotMatch = 0
+let colum = 0
+let lestIndexnotMatch = 0
+let sizenotMatch = 0
 let score = 0
 let numberOfMatch = 0
 let matchEnd = 0
@@ -14,32 +14,32 @@ let size = prompt(
 switch (size) {
   case '4':
     row = 2
-    Colum = 2
+    colum = 2
     numberOfMatch = 2
     break
   case '8':
     row = 2
-    Colum = 4
+    colum = 4
     numberOfMatch = 4
     break
   case '16':
     row = 4
-    Colum = 4
+    colum = 4
     numberOfMatch = 8
     break
   case '18':
     row = 6
-    Colum = 3
+    colum = 3
     numberOfMatch = 9
     break
   case '32':
     row = 8
-    Colum = 4
+    colum = 4
     numberOfMatch = 16
     break
   default:
     row = 2
-    Colum = 3
+    colum = 3
     numberOfMatch = 3
 }
 
@@ -73,22 +73,22 @@ let arrImg = [
 
 ////////////////////////////////
 //initialization the  game
-function createRowColum(row, Colum) {
+function createrowcolum(row, colum) {
   let html = ''
   for (let i = 0; i < row; i++) {
     html += '<tr>'
-    for (let i = 0; i < Colum; i++) {
+    for (let i = 0; i < colum; i++) {
       html += '<th></th>'
     }
     html += '</tr>'
   }
   document.querySelector('table').innerHTML = html
 }
-createRowColum(row, Colum)
+createrowcolum(row, colum)
 const BoxCards = document.querySelectorAll('th')
 
-const distributionCards = (row, Colum) => {
-  let size = (row * Colum) / 2
+const distributionCards = (row, colum) => {
+  let size = (row * colum) / 2
   for (let i = 0; i < size; i++) {
     let index = Math.floor(Math.random() * 15)
     newCards[i] = arrImg[index].toString()
@@ -97,13 +97,13 @@ const distributionCards = (row, Colum) => {
     BoxCards[size + i].innerHTML = `<img src=${arrImg[index]} alt="" />`
   }
 }
-distributionCards(row, Colum)
+distributionCards(row, colum)
 ////////////////////////////////
 // Functions For Game Logic Here
 
-const NotMatch = () => {
-  let size = sizeNotMatch
-  let lestIndex = lestIndexNotMatch
+const notMatch = () => {
+  let size = sizenotMatch
+  let lestIndex = lestIndexnotMatch
   document.querySelectorAll('img')[index[lestIndex]].style.opacity = ''
   document.querySelectorAll('th')[index[lestIndex]].style.backgroundColor = ''
   document.querySelectorAll('img')[index[lestIndex - 1]].style.opacity = ''
@@ -115,11 +115,11 @@ const NotMatch = () => {
   index.pop()
 }
 
-const CheckCards = () => {
+const checkCards = () => {
   let size = clickCards.length - 1
   let lestIndex = index.length - 1
-  sizeNotMatch = size
-  lestIndexNotMatch = lestIndex
+  sizenotMatch = size
+  lestIndexnotMatch = lestIndex
   if (clickCards[size] === clickCards[size - 1]) {
     document.querySelectorAll('th')[
       index[index.length - 1]
@@ -138,11 +138,11 @@ const CheckCards = () => {
       index[lestIndex - 1]
     ].style.backgroundColor = '#ff0000'
     errorSound.play()
-    setTimeout(NotMatch, 1000)
+    setTimeout(notMatch, 1000)
   }
 }
 
-const FlipTheCards = (Number) => {
+const flipTheCards = (Number) => {
   if (Number !== index[index.length - 1]) {
     document.querySelectorAll('img')[Number].style.opacity = '1'
     document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
@@ -152,7 +152,7 @@ const FlipTheCards = (Number) => {
     Counter++
 
     if (Counter === 2) {
-      CheckCards()
+      checkCards()
       Counter = 0
     }
   }
@@ -168,5 +168,5 @@ const FlipTheCards = (Number) => {
 }
 
 for (let i = 0; i < BoxCards.length; i++) {
-  BoxCards[i].addEventListener('click', () => FlipTheCards(i))
+  BoxCards[i].addEventListener('click', () => flipTheCards(i))
 }
