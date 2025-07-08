@@ -12,7 +12,7 @@
 
 # Play Game
 
-[Link to game](match-cards-by-abdulla-zaid.surge.sh)
+[Link to game](http://match-cards-by-abdulla-zaid.surge.sh/)
 
 # Getting Started
 
