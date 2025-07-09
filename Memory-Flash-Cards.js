@@ -43,7 +43,7 @@ switch (size) {
     numberOfMatch = 3
 }
 
-const Modes = document.querySelectorAll('li')
+const modes = document.querySelectorAll('li')
 const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
 const errorSound = new Audio('./audio/error-126627.mp3')
 
@@ -51,7 +51,7 @@ const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
 clickCards = []
 newCards = []
 index = []
-let Counter = 0
+let counter = 0
 
 let arrImg = [
   './images/1.png',
@@ -149,11 +149,11 @@ const flipTheCards = (Number) => {
     clickCards.push(newCards[Number])
     index.push(Number)
     audioFilpCard.play()
-    Counter++
+    counter++
 
-    if (Counter === 2) {
+    if (counter === 2) {
       checkCards()
-      Counter = 0
+      counter = 0
     }
   }
   if (matchEnd === numberOfMatch) {
