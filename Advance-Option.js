@@ -25,14 +25,14 @@ switch (size) {
     rowColum = 3
 }
 
-const Modes = document.querySelectorAll('li')
+const modes = document.querySelectorAll('li')
 const audioFilpCard = new Audio('./audio/card-sounds-Filp.mp3')
 const audioWinning = new Audio('./audio/winning.mp3')
 const audioGamesOver = new Audio('./audio/game-over-deep-male-voice.mp3')
 clickCards = []
 newCards = []
 index = []
-let Counter = 0
+let counter = 0
 let winFlag = true
 let timmerFlag = false
 
@@ -181,9 +181,9 @@ const flipTheCards = (Number) => {
     document.querySelectorAll('th')[Number].style.backgroundColor = 'green'
     clickCards.push(newCards[Number])
     index.push(Number)
-    Counter++
+    counter++
     audioFilpCard.play()
-    if (Counter >= rowColum) {
+    if (counter >= rowColum) {
       CheckWinner()
     }
   }
@@ -196,15 +196,15 @@ for (let i = 0; i < BoxCards.length; i++) {
   BoxCards[i].addEventListener('click', () => flipTheCards(i))
 }
 
-Modes[1].addEventListener('click', () => {
-  Modes[1].style.backgroundColor = '#03e203'
-  Modes[2].style.backgroundColor = '#efff0d'
+modes[1].addEventListener('click', () => {
+  modes[1].style.backgroundColor = '#03e203'
+  modes[2].style.backgroundColor = '#efff0d'
   setTimeout(clipCards, 1000)
   setTimeout(clipCardsBack, 4000)
 })
-Modes[2].addEventListener('click', () => {
-  Modes[1].style.backgroundColor = '#efff0d'
-  Modes[2].style.backgroundColor = '#03e203'
+modes[2].addEventListener('click', () => {
+  modes[1].style.backgroundColor = '#efff0d'
+  modes[2].style.backgroundColor = '#03e203'
   setTimeout(clipCards, 1000)
   setTimeout(clipCardsBack, 10000)
 })
